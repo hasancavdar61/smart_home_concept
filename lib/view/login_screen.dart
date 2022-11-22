@@ -2,19 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:smart_home_concept/components/social_button.dart';
+import 'package:smart_home_concept/view/main_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    String image =
+        'https://images.unsplash.com/photo-1668670975877-4e95bcb16145?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1364&q=80';
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: const NetworkImage(
-                'https://images.unsplash.com/photo-1668670975877-4e95bcb16145?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1364&q=80',
-              ),
+              image: NetworkImage(image),
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
                   Colors.black.withOpacity(0.4), BlendMode.colorBurn)),
@@ -29,7 +30,7 @@ class LoginScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
-                    height: Get.height / 8,
+                    height: Get.height / 5,
                   ),
                   SocialButton(
                     onPressed: () {},
@@ -88,6 +89,48 @@ class LoginScreen extends StatelessWidget {
                     decoration: InputDecoration(
                       filled: true,
                       hintText: '  Password',
+                    ),
+                  ),
+                  const Align(
+                    alignment: Alignment.centerRight,
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 15.0),
+                      child: Text(
+                        'Forgot password?',
+                        style: TextStyle(
+                            color: Colors.white,
+                            decoration: TextDecoration.underline),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: Get.height * 0.08),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(
+                          const Color(0xFF536DED),
+                        ),
+                      ),
+                      onPressed: () => Get.to(
+                        const MainScreen(),
+                      ),
+                      child: const Text(
+                        'Sign in',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                  const Align(
+                    alignment: Alignment.centerRight,
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 15.0),
+                      child: Text(
+                        "I don't have an account",
+                        style: TextStyle(
+                            color: Colors.white,
+                            decoration: TextDecoration.underline),
+                      ),
                     ),
                   ),
                 ],
